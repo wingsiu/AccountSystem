@@ -1,0 +1,55 @@
+# Backend
+backend/.build/
+backend/.swiftpm/
+backend/.xcodeproj/
+backend/.package.resolved
+backend/Package.resolved
+
+# Dependencies
+backend/Packages/
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+*.playground
+*.xcode
+
+# iOS Frontend
+frontend-ios/Pods/
+frontend-ios/.xcodeproj/
+frontend-ios/.xcworkspace/
+frontend-ios/build/
+frontend-ios/DerivedData/
+
+# Web Frontend
+frontend-web/node_modules/
+frontend-web/dist/
+frontend-web/build/
+frontend-web/.env.local
+frontend-web/.env.*.local
+
+# Mini Program
+frontend-miniprogram/node_modules/
+frontend-miniprogram/dist/
+frontend-miniprogram/miniprogram_npm/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# System
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

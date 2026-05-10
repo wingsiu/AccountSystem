@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: accountsystem-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: accountsystem
+      MYSQL_USER: accountuser
+      MYSQL_PASSWORD: accountpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - accountsystem
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: accountsystem-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: accountuser
+      PMA_PASSWORD: accountpass
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - accountsystem
+
+volumes:
+  mysql_data:
+
+networks:
+  accountsystem:
+    driver: bridge
