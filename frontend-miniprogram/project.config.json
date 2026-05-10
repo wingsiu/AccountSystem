@@ -1,0 +1,20 @@
+{
+  "appid": "YOUR_APPID_HERE",
+  "compileType": "miniprogram",
+  "libVersion": "2.30.4",
+  "projectname": "AccountSystem-MiniProgram",
+  "condition": {},
+  "editorSetting": {
+    "basePath": "",
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": true,
+    "showES6": true,
+    "showPromptDialog": true,
+    "showSCM": true,
+    "useCODEVersion": false
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  }
+}

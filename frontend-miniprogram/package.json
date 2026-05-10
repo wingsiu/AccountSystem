@@ -1,0 +1,16 @@
+{
+  "name": "accountsystem-miniprogram",
+  "version": "1.0.0",
+  "description": "WeChat Mini Program for AccountSystem",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "dependencies": {
+    "vant-weapp": "^1.10.0"
+  },
+  "devDependencies": {
+    "@wechat-miniprogram/eslint-config-tencent": "^1.0.1"
+  }
+}

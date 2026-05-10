@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <text class="title">登录</text>
+  <form bindsubmit="handleLogin">
+    <input class="input" name="email" placeholder="邮箱"/>
+    <input class="input" name="password" type="password" placeholder="密码"/>
+    <button formType="submit" class="login-btn">登录</button>
+  </form>
+</view>

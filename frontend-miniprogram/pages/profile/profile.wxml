@@ -1,0 +1,13 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <text class="title">个人信息</text>
+  <view class="profile-item">
+    <text class="label">用户名:</text>
+    <text class="value">{{userInfo.username}}</text>
+  </view>
+  <view class="profile-item">
+    <text class="label">邮箱:</text>
+    <text class="value">{{userInfo.email}}</text>
+  </view>
+  <button bindtap="logout" class="logout-btn">退出登录</button>
+</view>

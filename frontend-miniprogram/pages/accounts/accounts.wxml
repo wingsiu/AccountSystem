@@ -1,0 +1,11 @@
+<!--pages/accounts/accounts.wxml-->
+<view class="container">
+  <text class="title">我的账户</text>
+  <view class="accounts-list">
+    <view wx:for="{{accounts}}" wx:key="id" class="account-item">
+      <text class="account-name">{{item.account_name}}</text>
+      <text class="account-balance">余额: {{item.balance}}</text>
+    </view>
+  </view>
+  <button class="add-btn" bindtap="addAccount">添加账户</button>
+</view>

@@ -1,0 +1,9 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <text class="title">AccountSystem</text>
+  <text class="subtitle">个人账户管理系统</text>
+  <view class="button-group">
+    <button bindtap="navigateToAccounts">查看账户</button>
+    <button bindtap="navigateToTransactions">查看交易</button>
+  </view>
+</view>

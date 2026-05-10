@@ -1,0 +1,15 @@
+<!--pages/transactions/transactions.wxml-->
+<view class="container">
+  <text class="title">交易记录</text>
+  <view class="transactions-list">
+    <view wx:for="{{transactions}}" wx:key="id" class="transaction-item">
+      <view>
+        <text class="transaction-category">{{item.category}}</text>
+        <text class="transaction-desc">{{item.description}}</text>
+      </view>
+      <text class="transaction-amount {{item.transaction_type === 'income' ? 'income' : 'expense'}}">
+        {{item.transaction_type === 'income' ? '+' : '-'}}{{item.amount}}
+      </text>
+    </view>
+  </view>
+</view>

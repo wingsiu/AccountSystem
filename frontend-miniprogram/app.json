@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/accounts/accounts",
+    "pages/transactions/transactions",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "AccountSystem",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/accounts/accounts",
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_hl.png",
+        "text": "账户"
+      },
+      {
+        "pagePath": "pages/transactions/transactions",
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_hl.png",
+        "text": "交易"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
