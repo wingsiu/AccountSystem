@@ -10,6 +10,14 @@
 
 ## Local Development Setup
 
+### 0. Configure Environment Variables
+
+```bash
+cp .env.example .env
+```
+
+Update `.env` with your existing MySQL credentials.
+
 ### 1. Start MySQL Database
 
 Using Docker:
@@ -173,10 +181,10 @@ npm test
 ```
 DB_HOST=localhost
 DB_PORT=3306
-DB_USER=accountuser
-DB_PASSWORD=accountpass
+DB_USER=your_mysql_user
+DB_PASSWORD=your_mysql_password
 DB_NAME=accountsystem
-JWT_SECRET=your_secret_key
+JWT_SECRET=replace_with_a_long_random_secret
 ```
 
 ### Frontend Web (.env.local)

@@ -76,6 +76,21 @@ AccountSystem/
 
 ## 🚀 快速开始
 
+### 0. 配置环境变量（推荐）
+```bash
+cd /Users/alpha/Desktop/git/AccountSystem
+cp .env.example .env
+```
+
+编辑 `.env`，填入你现有 MySQL 的连接信息：
+- `DB_HOST`
+- `DB_PORT`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_NAME`
+
+`.env` 已被 `.gitignore` 忽略，不会上传到仓库。
+
 ### 1. 启动数据库
 ```bash
 cd /Users/alpha/Desktop/git/AccountSystem
@@ -83,8 +98,8 @@ docker-compose up -d
 ```
 
 访问 PhpMyAdmin: http://localhost:8080
-- 用户名: accountuser
-- 密码: accountpass
+- 用户名: 使用 `.env` 的 `PMA_USER`（或 `MYSQL_USER`）
+- 密码: 使用 `.env` 的 `PMA_PASSWORD`（或 `MYSQL_PASSWORD`）
 
 ### 2. 运行后端（Swift）
 ```bash

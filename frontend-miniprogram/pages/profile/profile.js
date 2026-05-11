@@ -15,6 +15,7 @@ Page({
   
   logout() {
     wx.removeStorageSync('authToken');
+    wx.removeStorageSync('token');
     wx.removeStorageSync('userInfo');
     wx.navigateTo({
       url: '/pages/login/login',

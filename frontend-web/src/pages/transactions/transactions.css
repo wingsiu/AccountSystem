@@ -1,0 +1,47 @@
+.transactions-page {
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th, .transactions-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.transactions-table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+.floating-refresh-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-refresh-btn:hover {
+  background-color: #0056b3;
+}
+

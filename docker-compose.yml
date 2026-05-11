@@ -5,10 +5,10 @@ services:
     image: mysql:8.0
     container_name: accountsystem-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: accountsystem
-      MYSQL_USER: accountuser
-      MYSQL_PASSWORD: accountpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_this_root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-accountsystem}
+      MYSQL_USER: ${MYSQL_USER:-accountuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_this_app_password}
     ports:
       - "3306:3306"
     volumes:
@@ -21,9 +21,9 @@ services:
     image: phpmyadmin:latest
     container_name: accountsystem-phpmyadmin
     environment:
-      PMA_HOST: mysql
-      PMA_USER: accountuser
-      PMA_PASSWORD: accountpass
+      PMA_HOST: ${PMA_HOST:-mysql}
+      PMA_USER: ${PMA_USER:-${MYSQL_USER:-accountuser}}
+      PMA_PASSWORD: ${PMA_PASSWORD:-${MYSQL_PASSWORD:-change_this_app_password}}
     ports:
       - "8080:80"
     depends_on:

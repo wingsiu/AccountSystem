@@ -8,6 +8,8 @@ func routes(_ app: Application) throws {
 
     // API v1 routes
     let v1 = app.grouped("api", "v1")
+    let readProtected = v1.grouped(RequireReadRoleMiddleware())
+    let writeProtected = v1.grouped(RequireWriteRoleMiddleware())
     
     // Auth routes
     let authController = AuthController()
@@ -16,17 +18,23 @@ func routes(_ app: Application) throws {
     
     // User routes
     let userController = UserController()
-    v1.get("users", ":id", use: userController.getUser)
-    v1.put("users", ":id", use: userController.updateUser)
+    readProtected.get("users", ":id", use: userController.getUser)
+    writeProtected.put("users", ":id", use: userController.updateUser)
+
+    // Fiscal year routes
+    let fiscalYearController = FiscalYearController()
+    readProtected.get("fiscal-years", use: fiscalYearController.listFiscalYears)
     
     // Account routes
     let accountController = AccountController()
-    v1.get("accounts", use: accountController.listAccounts)
-    v1.post("accounts", use: accountController.createAccount)
-    v1.get("accounts", ":id", use: accountController.getAccount)
+    readProtected.get("accounts", use: accountController.listAccounts)
+    writeProtected.post("accounts", use: accountController.createAccount)
+    writeProtected.put("accounts", ":id", use: accountController.updateAccount)
+    readProtected.get("accounts", ":id", use: accountController.getAccount)
     
     // Transaction routes
     let transactionController = TransactionController()
-    v1.get("transactions", use: transactionController.listTransactions)
-    v1.post("transactions", use: transactionController.createTransaction)
+    readProtected.get("transactions", use: transactionController.listTransactions)
+    writeProtected.post("transactions", use: transactionController.createTransaction)
+    writeProtected.put("transactions", ":id", use: transactionController.updateTransaction)
 }

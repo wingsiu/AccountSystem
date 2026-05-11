@@ -20,17 +20,11 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
                 .product(name: "JWT", package: "jwt"),
-            ],
-            swiftSettings: [
-                .unsafeFlags(["-suppress", "GD_COMMENT"])
             ]
         ),
         .executableTarget(
             name: "Run",
-            dependencies: [.target(name: "App")],
-            swiftSettings: [
-                .unsafeFlags(["-suppress", "GD_COMMENT"])
-            ]
+            dependencies: [.target(name: "App")]
         ),
         .testTarget(
             name: "AppTests",

@@ -2,45 +2,127 @@ import Fluent
 import Vapor
 
 final class Transaction: Model, Content {
-    static let schema = "transactions"
+    static let schema = "tbl_accDetails"
 
-    @ID(key: .id)
-    var id: UUID?
+    @ID(custom: "id", generatedBy: .database)
+    var id: Int?
 
-    @Parent(key: "account_id")
-    var account: Account
+    @OptionalField(key: "date")
+    var date: Date?
 
-    @Field(key: "transaction_type")
-    var transactionType: String // income, expense, transfer
+    @OptionalField(key: "effect_date")
+    var effectDate: Date?
 
-    @Field(key: "category")
-    var category: String
+    @OptionalField(key: "pay_method_des")
+    var payMethodDes: String?
 
-    @Field(key: "amount")
-    var amount: Double
+    @OptionalField(key: "cheque")
+    var cheque: String?
 
-    @Field(key: "description")
-    var description: String?
+    @OptionalField(key: "type_des")
+    var typeDes: String?
 
-    @Field(key: "transaction_date")
-    var transactionDate: Date
+    @OptionalField(key: "dr_amount")
+    var drAmount: Double?
 
-    @Timestamp(key: "created_at", on: .create)
+    @OptionalField(key: "cr_amount")
+    var crAmount: Double?
+
+    @OptionalField(key: "amount")
+    var amount: Double?
+
+    @OptionalField(key: "acc_name")
+    var accName: String?
+
+    @OptionalField(key: "Remarks")
+    var remarks: String?
+
+    @OptionalField(key: "ref_no")
+    var refNo: String?
+
+    @OptionalField(key: "balance")
+    var balance: Double?
+
+    @OptionalField(key: "bank_ref")
+    var bankRef: String?
+
+    @OptionalField(key: "acc_code")
+    var accCode: Int?
+
+    @OptionalField(key: "pay_method")
+    var payMethod: Int?
+
+    @OptionalField(key: "type")
+    var type: Int?
+
+    @OptionalField(key: "link_acc")
+    var linkAcc: Int?
+
+    @OptionalField(key: "adjust_type")
+    var adjustType: Int?
+
+    @OptionalField(key: "adjust_amount")
+    var adjustAmount: Double?
+
+    @OptionalField(key: "created_at")
     var createdAt: Date?
 
-    @Timestamp(key: "updated_at", on: .update)
+    @OptionalField(key: "updated_at")
     var updatedAt: Date?
+
+    @OptionalField(key: "order")
+    var orderValue: Int?
 
     init() { }
 
-    init(id: UUID? = nil, accountID: UUID, transactionType: String, category: String, amount: Double, description: String? = nil, transactionDate: Date = Date()) {
+    init(
+        id: Int? = nil,
+        date: Date? = nil,
+        effectDate: Date? = nil,
+        payMethodDes: String? = nil,
+        cheque: String? = nil,
+        typeDes: String? = nil,
+        drAmount: Double? = nil,
+        crAmount: Double? = nil,
+        amount: Double? = nil,
+        accName: String? = nil,
+        remarks: String? = nil,
+        refNo: String? = nil,
+        balance: Double? = nil,
+        bankRef: String? = nil,
+        accCode: Int? = nil,
+        payMethod: Int? = nil,
+        type: Int? = nil,
+        linkAcc: Int? = nil,
+        adjustType: Int? = nil,
+        adjustAmount: Double? = nil,
+        createdAt: Date? = nil,
+        updatedAt: Date? = nil,
+        orderValue: Int? = nil
+    ) {
         self.id = id
-        self.$account.id = accountID
-        self.transactionType = transactionType
-        self.category = category
+        self.date = date
+        self.effectDate = effectDate
+        self.payMethodDes = payMethodDes
+        self.cheque = cheque
+        self.typeDes = typeDes
+        self.drAmount = drAmount
+        self.crAmount = crAmount
         self.amount = amount
-        self.description = description
-        self.transactionDate = transactionDate
+        self.accName = accName
+        self.remarks = remarks
+        self.refNo = refNo
+        self.balance = balance
+        self.bankRef = bankRef
+        self.accCode = accCode
+        self.payMethod = payMethod
+        self.type = type
+        self.linkAcc = linkAcc
+        self.adjustType = adjustType
+        self.adjustAmount = adjustAmount
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.orderValue = orderValue
     }
 }
 
@@ -48,12 +130,27 @@ final class Transaction: Model, Content {
 extension Transaction {
     enum CodingKeys: String, CodingKey {
         case id
-        case transactionType = "transaction_type"
-        case category
+        case date
+        case effectDate = "effect_date"
+        case payMethodDes = "pay_method_des"
+        case cheque
+        case typeDes = "type_des"
+        case drAmount = "dr_amount"
+        case crAmount = "cr_amount"
         case amount
-        case description
-        case transactionDate = "transaction_date"
+        case accName = "acc_name"
+        case remarks = "Remarks"
+        case refNo = "ref_no"
+        case balance
+        case bankRef = "bank_ref"
+        case accCode = "acc_code"
+        case payMethod = "pay_method"
+        case type
+        case linkAcc = "link_acc"
+        case adjustType = "adjust_type"
+        case adjustAmount = "adjust_amount"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case orderValue = "order"
     }
 }

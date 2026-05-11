@@ -44,6 +44,27 @@ AccountSystem/
 - Xcode 13+ (for iOS)
 - WeChat Developer Tools (for mini program)
 
+### Environment Setup
+
+```bash
+cp .env.local .env
+```
+
+Use two private env files:
+
+- `.env.local` for local MySQL (DiskStation/home)
+- `.env.aws.local` for AWS MySQL
+
+Switch active backend env:
+
+```bash
+./scripts/use-env.sh local
+# or
+./scripts/use-env.sh aws
+```
+
+The active runtime file is `.env`. All `.env*local` files and `.env` are ignored by Git and will not be uploaded.
+
 ### Backend Setup
 
 ```bash

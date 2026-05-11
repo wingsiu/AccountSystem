@@ -3,7 +3,7 @@ import Fluent
 
 struct UserController {
     func getUser(req: Request) throws -> EventLoopFuture<User> {
-        guard let userID = req.parameters.get("id", as: UUID.self) else {
+        guard let userID = req.parameters.get("id", as: Int.self) else {
             throw Abort(.badRequest)
         }
         
@@ -12,7 +12,7 @@ struct UserController {
     }
 
     func updateUser(req: Request) throws -> EventLoopFuture<User> {
-        guard let userID = req.parameters.get("id", as: UUID.self) else {
+        guard let userID = req.parameters.get("id", as: Int.self) else {
             throw Abort(.badRequest)
         }
         

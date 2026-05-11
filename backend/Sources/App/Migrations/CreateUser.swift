@@ -10,7 +10,7 @@ struct CreateUser: AsyncMigration {
             .unique(on: "email")
             .field("password_hash", .string, .required)
             .field("full_name", .string)
-            .field("is_active", .bool, .required, .default(true))
+            .field("is_active", .bool, .required)
             .field("created_at", .datetime, .required)
             .field("updated_at", .datetime, .required)
             .create()
