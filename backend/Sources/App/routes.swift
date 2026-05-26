@@ -36,5 +36,15 @@ func routes(_ app: Application) throws {
     let transactionController = TransactionController()
     readProtected.get("transactions", use: transactionController.listTransactions)
     writeProtected.post("transactions", use: transactionController.createTransaction)
+    writeProtected.post("transactions", "bulk", use: transactionController.bulkCreateTransactions)
     writeProtected.put("transactions", ":id", use: transactionController.updateTransaction)
+    writeProtected.delete("transactions", ":id", use: transactionController.deleteTransaction)
+
+    // Income entry routes
+    let incomeController = IncomeController()
+    writeProtected.put("income-entries", ":id", use: incomeController.updateEntry)
+    try readProtected.register(collection: incomeController)
+
+    // Report routes
+    try readProtected.register(collection: ReportController())
 }

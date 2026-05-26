@@ -20,6 +20,10 @@ public func configure(_ app: Application) throws {
         database: Environment.get("DB_NAME") ?? "accountsystem"
     ), as: .mysql)
 
+    // Keep-alive: ping DB every 60 s so MySQL doesn't close idle connections
+    // (prevents "Connection reset by peer / errno 54" after periods of inactivity)
+    app.lifecycle.use(DatabaseKeepalive())
+
     let jwtSecret = Environment.get("JWT_SECRET") ?? "dev_only_change_me"
     app.jwt.signers.use(.hs256(key: jwtSecret))
 
@@ -28,4 +32,18 @@ public func configure(_ app: Application) throws {
 
     // register routes
     try routes(app)
+}
+
+// MARK: – DB keep-alive
+// Pings the database every 60 s to prevent MySQL from closing idle connections
+// (default wait_timeout is 8 h but remote servers often use a shorter value).
+private final class DatabaseKeepalive: LifecycleHandler {
+    func didBoot(_ app: Application) throws {
+        let el = app.eventLoopGroup.next()
+        el.scheduleRepeatedAsyncTask(initialDelay: .seconds(60), delay: .seconds(60)) { _ in
+            FiscalYear.query(on: app.db).count()
+                .map { _ in () }
+                .recover { _ in () }   // silently ignore errors (e.g. DB temporarily unreachable)
+        }
+    }
 }

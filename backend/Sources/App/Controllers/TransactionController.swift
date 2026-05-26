@@ -141,6 +141,35 @@ struct TransactionController {
         let effectDate: String?
     }
 
+    func bulkCreateTransactions(req: Request) throws -> EventLoopFuture<[Transaction]> {
+        let inputs = try req.content.decode([CreateTransactionRequest].self)
+        let newTransactions = inputs.map { input in
+            Transaction(
+                date: input.date,
+                effectDate: input.effectDate,
+                payMethodDes: input.payMethodDes,
+                cheque: input.cheque,
+                typeDes: input.typeDes,
+                drAmount: input.drAmount,
+                crAmount: input.crAmount,
+                amount: input.amount,
+                accName: input.accName,
+                remarks: input.remarks,
+                refNo: input.refNo,
+                balance: input.balance,
+                bankRef: input.bankRef,
+                accCode: input.accCode,
+                payMethod: input.payMethod,
+                type: input.type,
+                linkAcc: input.linkAcc,
+                adjustType: input.adjustType,
+                adjustAmount: input.adjustAmount,
+                orderValue: input.orderValue
+            )
+        }
+        return newTransactions.create(on: req.db).map { newTransactions }
+    }
+
     func updateTransaction(req: Request) throws -> EventLoopFuture<Transaction> {
         guard let txID = req.parameters.get("id", as: Int.self) else {
             return req.eventLoop.makeFailedFuture(Abort(.badRequest, reason: "Invalid transaction ID"))
@@ -191,5 +220,14 @@ struct TransactionController {
                 
                 return transaction.save(on: req.db).map { transaction }
             }
+    }
+
+    func deleteTransaction(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        guard let txID = req.parameters.get("id", as: Int.self) else {
+            return req.eventLoop.makeFailedFuture(Abort(.badRequest, reason: "Invalid transaction ID"))
+        }
+        return Transaction.find(txID, on: req.db)
+            .unwrap(or: Abort(.notFound, reason: "Transaction not found"))
+            .flatMap { $0.delete(on: req.db).map { .noContent } }
     }
 }

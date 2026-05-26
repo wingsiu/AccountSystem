@@ -3,11 +3,14 @@ import './App.css';
 import { authService, accountService, transactionService } from './services';
 import { clearAuthToken, setAuthToken } from './services/apiClient';
 import TransactionsPage from './pages/transactions/transactions';
+import ReportsPage from './pages/reports/reports';
+import IncomePage from './pages/income/income';
 
 const MENU_ITEMS = [
   { key: 'transactions', title: 'Transactions (View, Edit, Input, Import)', subtitle: '交易查看、編輯、輸入、導入' },
   { key: 'reports', title: 'Reports', subtitle: '報表' },
   { key: 'accounts', title: 'View / Edit Accounts', subtitle: '帳戶查看與編輯' },
+  { key: 'income', title: 'Income Entries', subtitle: '收入分錄 (4100) 連結管理' },
 ];
 
 const pickField = (row, camelKey, snakeKey) => row?.[camelKey] ?? row?.[snakeKey] ?? '';
@@ -33,7 +36,7 @@ function App() {
   const [dataLoading, setDataLoading] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
-  const [activeMenu, setActiveMenu] = useState('accounts');
+  const [activeMenu, setActiveMenu] = useState('transactions');
   const [query, setQuery] = useState('');
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [accountTransactions, setAccountTransactions] = useState([]);
@@ -459,7 +462,8 @@ function App() {
 
           {activeMenu === 'accounts' && renderAccountsModule()}
           {activeMenu === 'transactions' && <TransactionsPage />}
-          {activeMenu === 'reports' && renderComingSoon('Generate Report', 'Report templates and export pipeline will be built next.')}
+          {activeMenu === 'reports' && <ReportsPage />}
+          {activeMenu === 'income' && <IncomePage />}
         </main>
       )}
     </div>

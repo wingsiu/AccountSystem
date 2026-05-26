@@ -45,3 +45,156 @@
   background-color: #0056b3;
 }
 
+/* ── Import Excel Button ─────────────────────────── */
+.import-excel-btn {
+  padding: 6px 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.import-excel-btn:hover { background-color: #1e7e34; }
+
+/* ── Import Modal Overlay ────────────────────────── */
+.import-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 2000;
+  padding: 30px 16px;
+  overflow-y: auto;
+}
+
+.import-modal {
+  background: #fff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 60px);
+}
+
+.import-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.import-modal-header h2 { margin: 0; font-size: 18px; }
+
+.import-close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0 4px;
+}
+.import-close-btn:hover { color: #000; }
+
+.import-file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.import-parse-btn {
+  padding: 6px 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.import-parse-btn:hover { background: #0056b3; }
+
+.import-info {
+  padding: 8px 20px;
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+.import-warn-count { color: #c0392b; font-weight: 600; }
+
+/* ── Import Preview Table ────────────────────────── */
+.import-table-wrap {
+  overflow: auto;
+  flex: 1;
+  padding: 0 20px 10px;
+}
+
+.import-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+.import-table th {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+.import-table td {
+  border: 1px solid #e8e8e8;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+.import-row-missing { background-color: #fff3cd; }
+.import-td-date { white-space: nowrap; }
+.import-td-num { text-align: right; white-space: nowrap; }
+
+.import-select, .import-select-warn {
+  width: 200px;
+  font-size: 13px;
+  padding: 3px 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.import-select-warn { border-color: #e67e22; background-color: #fef9e7; }
+
+.import-input {
+  width: 160px;
+  font-size: 13px;
+  padding: 3px 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+/* ── Import Footer ───────────────────────────────── */
+.import-footer {
+  padding: 14px 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+}
+.import-submit-btn {
+  padding: 9px 28px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.import-submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+.import-submit-btn:hover:not(:disabled) { background: #1e7e34; }
+
+/* ── Status Note ─────────────────────────────────── */
+

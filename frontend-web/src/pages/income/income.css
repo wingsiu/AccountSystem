@@ -1,0 +1,294 @@
+.income-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.income-workspace .workspace-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.income-workspace .workspace-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.income-workspace .search-input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  min-width: 180px;
+}
+
+.income-workspace .filter-select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.income-workspace .refresh-btn {
+  padding: 0.4rem 0.8rem;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.income-workspace .refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.income-workspace .status-note {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: #555;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.income-workspace .table-wrap {
+  overflow-x: auto;
+}
+
+.income-workspace table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+}
+
+.income-workspace th,
+.income-workspace td {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  white-space: nowrap;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Last column (Linked Transactions) can be wider but still bounded */
+.income-workspace td:last-child,
+.income-workspace th:last-child {
+  white-space: normal;
+  max-width: 480px;
+  min-width: 200px;
+}
+
+.income-workspace thead th {
+  background: #f4f6f8;
+  font-weight: 600;
+}
+
+.income-workspace tr:hover td {
+  background: #f9fbff;
+}
+
+/* Linked row */
+.income-workspace .linked-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Unlinked row */
+.income-workspace .unlinked-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Sum mismatch */
+.income-workspace .mismatch-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f8d7da;
+  color: #721c24;
+  cursor: help;
+}
+
+.income-workspace .no-match-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Candidate select area */
+.candidate-row td {
+  background: #fffbef !important;
+}
+
+.candidate-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  max-width: 440px;
+}
+
+.candidate-panel select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
+}
+
+.candidate-panel .link-btn {
+  padding: 0.3rem 0.7rem;
+  background: #198754;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.candidate-panel .link-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.candidate-panel .load-candidates-btn {
+  padding: 0.3rem 0.7rem;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.candidate-panel .load-candidates-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Linked tx chips */
+.tx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #e8f0fe;
+  border: 1px solid #a8c7fa;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+  margin: 2px;
+  white-space: nowrap;
+}
+
+.tx-chip .unlink-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c00;
+  font-size: 0.75rem;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.tx-chip .unlink-btn:hover {
+  color: #900;
+}
+
+.income-workspace .error-text { color: #c00; font-size: 0.82rem; }
+.income-workspace .success-text { color: #198754; font-size: 0.82rem; }
+
+/* Edit button */
+.edit-btn {
+  padding: 0.25rem 0.6rem;
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.edit-btn:hover { background: #5a6268; }
+
+/* Edit Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-width: 340px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.edit-modal h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.edit-form {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.edit-form label {
+  font-size: 0.82rem;
+  color: #555;
+  text-align: right;
+}
+
+.edit-form input,
+.edit-form select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.edit-modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
